@@ -1,0 +1,130 @@
+<div class="containerAll">
+    <div class="header-app" style="margin-top:1rem;">
+        <h1 style=" font-weight: bold;">Algoritmo CANOPY</h1>
+    </div>
+
+    <div class="row filtros">
+
+        <div class="col-md-5">
+            <mat-form-field class="example-form-field inputNombre">
+
+                <mat-label>Número de Clusters</mat-label>
+
+                <input type="number" matInput [formControl]="fCluster">
+
+            </mat-form-field>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <mat-form-field class="example-form-field inputNombre">
+                <mat-label>Seed</mat-label>
+                <input type="number" matInput [value]="1" [readonly]="true">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-form-field inputNombre">
+                <mat-label>Algoritmo</mat-label>
+                <mat-select matInput [formControl]="fAlg">
+                    <mat-option [value]="1"> Canopy </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-2">
+            <div class="example-button-row botones ">
+
+                <button mat-raised-button color="primary" (click)="fnGetCanopyUnique()">Consultar</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill" style="width:80%">
+            <mat-label>Query</mat-label>
+            <textarea matInput placeholder="Query..."></textarea>
+          </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8 ">
+        <table mat-table [dataSource]="dataSource" matSort style="width: 100%;" aria-describedby="TablaCanopy">
+
+            <!-- Codigo -->
+            <ng-container matColumnDef="nCluster">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaId" id="nCluster"> Cluster </th>
+                <td mat-cell *matCellDef="let element; index as i"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Nombre -->
+            <ng-container matColumnDef="htitulo_cat">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaTitulo" id="Categoria">
+                    Categoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.htitulo_cat}} </td>
+            </ng-container>
+
+            <!-- Nombre -->
+            <ng-container matColumnDef="htitulo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaTitulo" id="Titulo"> Titulo
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.htitulo}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="funciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaFunciones" id="Funciones"> Funciones
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.funciones}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+    </div>
+
+    <br>
+    <br>
+    <div class="row" *ngIf="bMostrar">
+        <div class="col-md-4">
+
+            <ul class="list-group ">
+                <li class="list-group-item active">Número de Canopys</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Radio T2
+                    <span class="badge badge-primary badge-pill">
+                        0.866
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Radio T1
+                    <span class="badge badge-primary badge-pill">
+                        1.083
+                    </span>
+                </li>
+            </ul>
+
+
+
+        </div>
+
+        <br>
+        <div class="col-md-3">
+            <ul class="list-group" *ngFor="let item of arrayNumbers; let i = index">
+                <li class="list-group-item active">Instancias</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{i+1}} <b>{{item.instance}}</b>
+                    <span class="badge badge-primary badge-pill">
+                        {{item.porcentaje}} %
+                    </span>
+                </li>             
+            </ul>
+
+        </div>
+
+    </div>
+</div>
