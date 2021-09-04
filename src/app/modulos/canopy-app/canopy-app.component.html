@@ -46,8 +46,8 @@
     <div>
         <mat-form-field class="example-full-width" appearance="fill" style="width:80%">
             <mat-label>Query</mat-label>
-            <textarea matInput placeholder="Query..."></textarea>
-          </mat-form-field>
+            <textarea matInput placeholder="Query..." [formControl]="fQuery"></textarea>
+        </mat-form-field>
     </div>
 
     <div class="example-container mat-elevation-z8 ">
@@ -75,7 +75,8 @@
 
             <!-- Rol -->
             <ng-container matColumnDef="funciones">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaFunciones" id="Funciones"> Funciones
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnaFunciones" id="Funciones">
+                    Funciones
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.funciones}} </td>
             </ng-container>
@@ -97,7 +98,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Radio T2
                     <span class="badge badge-primary badge-pill">
-                        0.866
+                        0.866 
                     </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -114,14 +115,18 @@
 
         <br>
         <div class="col-md-3">
-            <ul class="list-group" *ngFor="let item of arrayNumbers; let i = index">
-                <li class="list-group-item active">Instancias</li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+            <ul class="list-group">
+                <li class="list-group-item active d-flex justify-content-between">
+                    <span>Cluster</span>
+                    <span>Cantidad</span> <span>Porcentaje</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let item of arrayNumbers; let i = index">
                     {{i+1}} <b>{{item.instance}}</b>
                     <span class="badge badge-primary badge-pill">
                         {{item.porcentaje}} %
                     </span>
-                </li>             
+                </li>
             </ul>
 
         </div>

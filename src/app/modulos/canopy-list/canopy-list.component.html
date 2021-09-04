@@ -1,0 +1,231 @@
+<div class="containerAll">
+    <div class="header-app" style="margin-top:1rem;">
+        <h1 style=" font-weight: bold;">Algoritmo CANOPY</h1>
+    </div>
+
+    <!--Filtros-->
+    <div class="row filtros">
+
+        <div class="col-md-5">
+            <mat-form-field class="example-form-field inputNombre">
+
+                <mat-label>Número de Clusters</mat-label>
+
+                <input type="number" matInput [formControl]="fCluster">
+
+            </mat-form-field>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <mat-form-field class="example-form-field inputNombre">
+                <mat-label>Seed</mat-label>
+                <input type="number" matInput [value]="1" [readonly]="true">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-form-field inputNombre">
+                <mat-label>Algoritmo</mat-label>
+                <mat-select matInput [formControl]="fAlg">
+                    <mat-option [value]="1"> Canopy </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-2">
+            <div class="example-button-row botones ">
+
+                <button mat-raised-button color="primary" (click)="fnCrearTabla()">Consultar</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--Query-->
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill" style="width:80%;height: 5rem;">
+            <mat-label>Query</mat-label>
+            <textarea matInput placeholder="Query..." [formControl]="fQuery"></textarea>
+        </mat-form-field>
+    </div>
+
+
+    <!--Tabla-->
+    <div class="example-container mat-elevation-z8 ">
+        <table mat-table [dataSource]="dataSource" matSort style="width: 100%;" aria-describedby="TablaCanopy">
+
+            <!-- Codigo -->
+            <ng-container matColumnDef="nCluster">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnShort" id="nCluster"> Cluster
+                </th>
+                <td mat-cell *matCellDef="let element; index as i"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Nombre -->
+            <ng-container matColumnDef="htitulo_cat">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="Categoria">
+                    Categoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.htitulo_cat}} </td>
+            </ng-container>
+
+            <!-- Nombre -->
+            <ng-container matColumnDef="htitulo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnMid" id="Titulo"> Titulo
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.htitulo}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="pagina_web">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnShort" id="pagina_web">
+                    Pag. Web
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.pagina_web}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="empresa">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="empresa">
+                    Empresa
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="lugar">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="lugar">
+                    Lugar
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.lugar}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="salario">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnMid" id="salario">
+                    Salario
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.salario}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="periodo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnShort" id="periodo">
+                    Periodo
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.periodo}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="funciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="Funciones">
+                    Funciones
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.funciones}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="conocimiento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnMid" id="conocimiento">
+                    Conocimiento
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.conocimiento}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="habilidades">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="clsColumnShort" id="habilidades">
+                    Habilidades
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.habilidades}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="competencias">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="competencias">
+                    Competencias
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.competencias}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="certificaciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="certificaciones">
+                    Certificaciones
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.certificaciones}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="beneficio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="beneficio">
+                    Beneficio
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.beneficio}} </td>
+            </ng-container>
+
+            <!-- Rol -->
+            <ng-container matColumnDef="formacion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="" id="formacion">
+                    Formacion
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.formacion}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+    </div>
+
+    <br>
+    <br>
+
+    <!--Resultados Canopy-->
+    <div class="row" *ngIf="bMostrar">
+        <div class="col-md-4">
+
+            <ul class="list-group ">
+                <li class="list-group-item active">Número de Canopys</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Radio T2
+                    <span class="badge badge-primary badge-pill">
+                        1.845
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Radio T1
+                    <span class="badge badge-primary badge-pill">
+                        2.306
+                    </span>
+                </li>
+            </ul>
+
+
+
+        </div>
+
+        <br>
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item active d-flex justify-content-between">
+                    <span>Cluster</span>
+                    <span>Cantidad</span> <span>Porcentaje</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let item of arrayNumbers; let i = index">
+                    {{i+1}} <b>{{item.instance}}</b>
+                    <span class="badge badge-primary badge-pill">
+                        {{item.porcentaje}} %
+                    </span>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+<br>

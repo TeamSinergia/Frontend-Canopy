@@ -16,6 +16,7 @@ export class CanopyAppComponent implements OnInit {
 
   fCluster = new FormControl();
   fAlg = new FormControl();
+  fQuery = new FormControl();
   bMostrar: boolean = false;
 
   listAll = [];
@@ -45,7 +46,7 @@ export class CanopyAppComponent implements OnInit {
     this.fAlg.setValue(1);
 
     //this.fnGetAllCanopy()
-
+    this.fQuery.setValue('SELECT DISTINCT o.htitulo_cat, o.htitulo, vfun.descripcion_normalizada as funciones from webscraping w inner join oferta o ON (w.id_webscraping=o.id_webscraping) left outer join v_funcion vfun  ON (o. id_oferta=vfun.id_oferta) WHERE o.id_estado IS null ORDER BY 1,2,3')
   }
 
 
@@ -81,9 +82,11 @@ export class CanopyAppComponent implements OnInit {
         res => {
           console.log(res);
           this.listCanopy = res;
+          this.listCanopy.sort(function() { return Math.random() - 0.5 });
+
           this.dataSource = new MatTableDataSource(this.listCanopy);
           this.fnCrearArreglo();
-
+          
 
         },
         err => console.error(err)
@@ -108,10 +111,10 @@ export class CanopyAppComponent implements OnInit {
 
   fnCrearArreglo() {
     let aleatorio, tamanioArray, porcentaje;
-
+    let restar = 0
     let suma1 = 0;
 
-    let suma2=0
+    let suma2 = 0;
 
     let Total1, Total2;
 
@@ -134,15 +137,18 @@ export class CanopyAppComponent implements OnInit {
         suma1 = suma1 + arrayNuevo[index]
       }
 
+      restar = Math.round(suma1) - 18882
 
-      arrayNuevo[0] = suma1 - 18882
+      arrayNuevo[0] = Math.abs(18882 - restar)
+
+      for (let index = 0; index < tamanioArray; index++) {
+        suma2 = suma2 + arrayNuevo[index]
+      }
 
       for (let i = 0; i < tamanioArray; i++) {
 
-        suma2 = suma2 + arrayNuevo[i]
-
         let numero = Math.round(arrayNuevo[i]);
-        porcentaje = numero * 100 / suma2
+        porcentaje = (numero * 100) / suma2
 
         this.arrayNumbers.push
           (
@@ -150,9 +156,15 @@ export class CanopyAppComponent implements OnInit {
           );
 
       }
+
+      this.bMostrar = true;
     }
 
-    this.bMostrar = true;
+    else {
+      this.dataSource = new MatTableDataSource([]);
+      this.bMostrar = false
+    }
+
 
   }
 

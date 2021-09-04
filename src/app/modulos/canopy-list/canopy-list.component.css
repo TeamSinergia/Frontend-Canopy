@@ -1,0 +1,179 @@
+table {
+    width: 100%;
+}
+
+.header-app {
+    text-align: center;
+}
+
+/* .filtros {
+    display        : flex;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    justify-content: center;
+} */
+
+.inputNombre {
+    width       : 90%;
+    padding-top : 14px;
+    margin-right: 1rem;
+}
+
+.inputAsignatura {
+    width       : 90%;
+    padding-top : 14px;
+    margin-right: 1rem;
+}
+
+.selectEstado {
+    margin-right: 1rem;
+}
+
+.example-button-row button,
+.example-button-row a {
+    margin-right: 0.5rem;
+}
+
+.botones {
+    margin-left: 1rem;
+    margin-top : 1rem;
+    float      : right;
+}
+
+.clsColumnaId {
+    width: 10%;
+}
+
+.clsColumnaTitulo {
+    width: 15%;
+}
+
+.clsColumnaFunciones {
+    width: 60%;
+}
+
+.buttonActive {
+    background-color: forestgreen;
+    color           : white;
+}
+
+.example-container {
+    /* height  : 20rem; */
+    width   : 100%;
+    overflow: auto;
+}
+
+.containerAll {
+    width : 80%;
+    margin: auto
+}
+
+.ulCluster {
+    float: left;
+}
+
+.ulCluster>li {
+    width: 6em;
+}
+
+.clsColumnShort {
+    width: 5%;
+}
+
+.clsColumnMid {
+    width: 7%;
+}
+
+.clsColumnLarge {
+    width: 10%;
+}
+
+.mat-column-nCluster {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+}
+
+.mat-column-htitulo_cat {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-htitulo {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-pagina_web {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-empresa {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-lugar {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-salario {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-periodo {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-funciones {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-conocimiento {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-habilidades {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-competencias {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-certificaciones {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-beneficio {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
+.mat-column-formacion {
+    border: 1px solid currentColor;
+    border-color: #3f51b5;
+    padding-left: 0.5rem
+}
+
