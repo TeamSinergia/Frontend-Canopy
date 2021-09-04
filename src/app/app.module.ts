@@ -30,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './modulos/footer/footer.component';
+import { CanopyListComponent } from './modulos/canopy-list/canopy-list.component';
 
 
 
@@ -38,7 +39,8 @@ import { FooterComponent } from './modulos/footer/footer.component';
     AppComponent,
     NavigationComponent,
     CanopyAppComponent,
-    FooterComponent
+    FooterComponent,
+    CanopyListComponent
   ],
   imports: [
     BrowserModule,
